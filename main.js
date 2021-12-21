@@ -1,29 +1,19 @@
-function log_in(){;
-if (localStorage.getItem("username") == document.getElementById("username").value && localStorage.getItem("passcode") == document.getElementById("passcode").value){
-    window.location="let`s_chat_room.html";
-}
+const firebaseConfig = {
+    apiKey: "AIzaSyCiq6_KBM_I6dglRpa_OOGVahd54th0iBc",
+    authDomain: "lets-chat-19581.firebaseapp.com",
+    databaseURL: "https://lets-chat-19581-default-rtdb.firebaseio.com",
+    projectId: "lets-chat-19581",
+    storageBucket: "lets-chat-19581.appspot.com",
+    messagingSenderId: "164275295070",
+    appId: "1:164275295070:web:62899d4eaf91dae3f5b5cf"
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
 
-}
-
-function enter_sign_in(){
-    document.getElementById("enter_sign_in").style.display="none";
-    document.getElementById("enter_login").style.display="inline-block";
-    document.getElementById("login").style.display="none";
-    document.getElementById("sign_in").style.display="inline-block";
-}
-
-function enter_login(){
-    document.getElementById("enter_sign_in").style.display="inline-block";
-    document.getElementById("enter_login").style.display="none";
-    document.getElementById("login").style.display="inline-block";
-    document.getElementById("sign_in").style.display="none";
-}
-
-function sign_in(){
-    usernameEnterd = document.getElementById("username").value;
-    passcodeEnterd = document.getElementById("passcode").value;
-   localStorage.setItem("username",usernameEnterd);
-   localStorage.setItem("passcode",passcodeEnterd);
-   window.location="https://manas-2010.github.io/muice-app-last-turn/";
-
+function log_in(){
+    username = document.getElementById("username").value;
+    firebase.database().ref("/").child("username").update({
+    username: username
+});
 }
