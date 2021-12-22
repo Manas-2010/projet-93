@@ -9,9 +9,10 @@ const firebaseConfig = {
   };
   
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
 
 function log_in(){
+  localStorage.setItem("username", username);
     username = document.getElementById("username").value;
     firebase.database().ref("/").child("username").update({
     username: username
